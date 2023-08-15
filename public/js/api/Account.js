@@ -4,10 +4,15 @@
  * Имеет свойство URL со значением '/account'
  * */
 class Account extends Entity {
-  /**
-   * Получает информацию о счёте
-   * */
-  static get(id = '', callback){
-
-  }
+    static URL = "/account";
+    /**
+     * Получает информацию о счёте
+     * */
+    static get(id = "", callback) {
+        createRequest({
+            url: this.URL + "/" + id, // почему лучше это - чем шаблонка? тк визуально шаблон читается в данной ситуации сложнее...
+            method: "GET",
+            callback,
+        });
+    }
 }
