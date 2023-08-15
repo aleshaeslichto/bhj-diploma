@@ -4,39 +4,53 @@
  * */
 
 const createRequest = (options = {}) => {
-    const xhr = new XMLHttpRequest();
+    const { url, method, callback } = options;
 
+    const xhr = new XMLHttpRequest();
     xhr.responseType = "json";
 
-    let url = options.url;
+    const isGet = method.toUpperCase() === "GET";
 
-    if (options.method === "GET" && options.data) {
-        const params = new URLSearchParams();
-        Object.entries(options.data).forEach(([key, value]) =>
-            params.append(key, value)
-        );
-        url += `?${params.toString()}`;
+    function getGetData() {
+        const data = options.data || {};
+        if (!data) {
+            return null;
+        }
+
+        let params = "";
+        Object.keys(data).forEach((key) => {
+            params += `${key}=${data[key]}&`;
+        });
+
+        return params.slice(0, -1);
     }
 
+    function getNonGetData() {
+        const data = options.data || {};
+        const formData = new FormData();
+
+        Object.keys(data).forEach((key) => {
+            formData.append(key, data[key]);
+        });
+
+        return formData;
+    }
+
+    const requestData = isGet ? getGetData() : getNonGetData();
+
+    xhr.open(method, url); // инициализация запроса
+
     xhr.onload = () => {
-        let response = xhr.response;
-        let error = null;
-        if (xhr.status >= 400) {
-            error = new Error("Ошибка запроса");
+        if (xhr.status === 200) {
+            callback(null, xhr.response);
+        } else {
+            callback(new Error("Ошибка: проблема с отправкой запроса"));
         }
-        options.callback(error, response);
     };
 
     xhr.onerror = () => {
-        options.callback(new Error("Сетевая ошибка"));
+        callback(new Error("Ошибка: проблема с сетью"));
     };
 
-    xhr.open(options.method, url);
-
-    if (options.data && options.method !== "GET") {
-        xhr.setRequestHeader("Content-Type", "application/json");
-        options.data = JSON.stringify(options.data);
-    }
-
-    xhr.send(options.data);
+    xhr.send(requestData); // отправка запроса
 };
