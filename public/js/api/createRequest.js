@@ -4,6 +4,7 @@
  * */
 
 const createRequest = (options = {}) => {
+
     const { url, method, callback } = options;
 
     const xhr = new XMLHttpRequest();
@@ -25,6 +26,18 @@ const createRequest = (options = {}) => {
         return params.slice(0, -1);
     }
 
+    // function getNonGetData() {
+
+    //     const {email, password} = options.data;
+
+    //     const formData = new FormData();
+
+    //     formData.append('email', email);
+    //     formData.append('password', password);
+
+    //     return formData;
+    //   }
+
     function getNonGetData() {
         const data = options.data || {};
         const formData = new FormData();
@@ -35,8 +48,6 @@ const createRequest = (options = {}) => {
 
         return formData;
     }
-
-    const requestData = isGet ? getGetData() : getNonGetData();
 
     xhr.open(method, url); // инициализация запроса
 
@@ -51,6 +62,8 @@ const createRequest = (options = {}) => {
     xhr.onerror = () => {
         callback(new Error("Ошибка: проблема с сетью"));
     };
+
+    const requestData = isGet ? getGetData() : getNonGetData();
 
     xhr.send(requestData); // отправка запроса
 };

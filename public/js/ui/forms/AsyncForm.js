@@ -25,12 +25,11 @@ class AsyncForm {
      * вызывает метод submit()
      * */
     registerEvents() {
-        this.submit = this.submit.bind(this);
-        this.element.addEventListener("submit", (event) => {
-            event.preventDefault();
-            this.submit();
-        });
-    }
+        this.element.onsubmit = (e) => {
+          e.preventDefault();
+          this.submit();
+        }
+      }
 
     /**
      * Преобразует данные формы в объект вида
@@ -40,15 +39,15 @@ class AsyncForm {
      * }
      * */
     getData() {
-        const data = {};
-
-        const formData = new FormData(this.form);
-
-        for (let [name, value] of formData.entries()) {
-            data[name] = value;
+        const formData = new FormData (this.element);
+        const keyValue = {};
+        for (let item of formData.entries()) {
+          const key = item[0];
+          const value = item[1];
+          keyValue[key] = value;
         }
-        return data;
-    }
+        return keyValue
+      }
 
     onSubmit(options) {}
 
@@ -57,13 +56,8 @@ class AsyncForm {
      * данные, полученные из метода getData()
      * */
     submit() {
-        const data = this.getData();
+        this.onSubmit(this.getData());
+     }
+   }
 
-        this.onSubmit({
-            url: this.element.action,
-            method: this.element.method,
-            data,
-        });
-    }
-}
 
