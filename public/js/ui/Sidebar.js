@@ -27,21 +27,24 @@ class Sidebar {
       };
 
       registerButton.addEventListener('click', (e) => {
+        e.preventDefault();
         App.getModal('register').open();
       });
 
       loginButton.addEventListener('click', (e) => {
+        e.preventDefault();
         App.getModal('login').open();
       });
 
       logoutButton.addEventListener('click', (e) => {
+        e.preventDefault();
         User.logout((error, response) => {
           if (error) {
             console.error(error);
             return;
           }
 
-          if (response && response.succes) {
+          if (response.success) {
             App.setState('init');
           }
         });

@@ -26,18 +26,6 @@ const createRequest = (options = {}) => {
         return params.slice(0, -1);
     }
 
-    // function getNonGetData() {
-
-    //     const {email, password} = options.data;
-
-    //     const formData = new FormData();
-
-    //     formData.append('email', email);
-    //     formData.append('password', password);
-
-    //     return formData;
-    //   }
-
     function getNonGetData() {
         const data = options.data || {};
         const formData = new FormData();
