@@ -29,6 +29,12 @@
       "email": "demo1@demo1",
       "password": "demo1",
       "id": "5v03k9l0llkt2nwy"
+    },
+    {
+      "name": "demo2",
+      "email": "demo2@demo",
+      "password": "demo2",
+      "id": "5v03k2vollkyw5hk"
     }
   ],
   "accounts": [
@@ -51,6 +57,11 @@
       "name": "msg-theme",
       "user_id": "1",
       "id": "5v03k7s0llktvk5w"
+    },
+    {
+      "name": "sdf",
+      "user_id": "5v03k2vollkyw5hk",
+      "id": "5v03k6zgllkywbv4"
     }
   ],
   "transactions": [

@@ -13,7 +13,7 @@ class TransactionsWidget {
    * */
   constructor(element) {
       if (!element) {
-          throw new Error('Element was not found!');
+          throw new Error('TransactionWidget: Элемент не найден');
       }
 
       this.element = element;

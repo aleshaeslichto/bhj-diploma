@@ -15,7 +15,7 @@ class AccountsWidget {
    * */
   constructor(element) {
       if (!element) {
-          throw new Error('Element was not found!');
+          throw new Error('AccountWidget: Элемент не найден');
       }
 
       this.element = element;
