@@ -13,7 +13,7 @@ class UserWidget {
    * */
   constructor(element) {
       if (!element) {
-          throw new Error('Element was not found');
+          throw new Error('UserWidget: Элемент не найден');
       }
 
       this.element = element;
