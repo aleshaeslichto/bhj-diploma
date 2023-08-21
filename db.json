@@ -23,6 +23,12 @@
       "email": "demo@demo1",
       "password": "demo1",
       "id": "5v03kb0llezazmb"
+    },
+    {
+      "name": "demo1",
+      "email": "demo1@demo1",
+      "password": "demo1",
+      "id": "5v03k9l0llkt2nwy"
     }
   ],
   "accounts": [
@@ -40,6 +46,11 @@
       "name": "Бизнес",
       "user_id": "1",
       "id": "3"
+    },
+    {
+      "name": "msg-theme",
+      "user_id": "1",
+      "id": "5v03k7s0llktvk5w"
     }
   ],
   "transactions": [
