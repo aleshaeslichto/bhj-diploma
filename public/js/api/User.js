@@ -56,7 +56,14 @@ class User {
             url: `${this.URL}/login`,
             data,
             method: "POST",
-            callback,
+            callback: (err, response) => {
+                if (response.success) {
+                    this.setCurrent(response.user);
+                } else {
+                    this.unsetCurrent();
+                }
+                callback(err, response);
+            },
         });
     }
 
@@ -71,7 +78,14 @@ class User {
             url: `${this.URL}/register`,
             data,
             method: "POST",
-            callback,
+            callback: (err, response) => {
+                if (response.success) {
+                    this.setCurrent(response.user);
+                } else {
+                    this.unsetCurrent();
+                }
+                callback(err, response);
+            },
         });
     }
 

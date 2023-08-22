@@ -26,10 +26,10 @@ class AsyncForm {
      * */
     registerEvents() {
         this.element.onsubmit = (e) => {
-          e.preventDefault();
-          this.submit();
-        }
-      }
+            e.preventDefault();
+            this.submit();
+        };
+    }
 
     /**
      * Преобразует данные формы в объект вида
@@ -39,25 +39,20 @@ class AsyncForm {
      * }
      * */
     getData() {
-        const formData = new FormData (this.element);
+        const formData = new FormData(this.element);
         const keyValue = {};
         for (let item of formData.entries()) {
-          const key = item[0];
-          const value = item[1];
-          keyValue[key] = value;
+            const key = item[0];
+            const value = item[1];
+            keyValue[key] = value;
         }
-        return keyValue
-      }
+        return keyValue;
+    }
 
     onSubmit(options) {}
 
-    /**
-     * Вызывает метод onSubmit и передаёт туда
-     * данные, полученные из метода getData()
-     * */
     submit() {
         this.onSubmit(this.getData());
-     }
-   }
+    }
 
-
+}

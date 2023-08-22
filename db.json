@@ -5,36 +5,6 @@
       "email": "demo@demo",
       "password": "demo",
       "id": "1"
-    },
-    {
-      "id": "hhl0b3cllcpkm8o"
-    },
-    {
-      "id": "hhl09c4llcpujo3"
-    },
-    {
-      "id": "hhl0drcllcpz6p2"
-    },
-    {
-      "id": "hhl0278llcq3725"
-    },
-    {
-      "name": "demo1",
-      "email": "demo@demo1",
-      "password": "demo1",
-      "id": "5v03kb0llezazmb"
-    },
-    {
-      "name": "demo1",
-      "email": "demo1@demo1",
-      "password": "demo1",
-      "id": "5v03k9l0llkt2nwy"
-    },
-    {
-      "name": "demo2",
-      "email": "demo2@demo",
-      "password": "demo2",
-      "id": "5v03k2vollkyw5hk"
     }
   ],
   "accounts": [
@@ -52,16 +22,6 @@
       "name": "Бизнес",
       "user_id": "1",
       "id": "3"
-    },
-    {
-      "name": "msg-theme",
-      "user_id": "1",
-      "id": "5v03k7s0llktvk5w"
-    },
-    {
-      "name": "sdf",
-      "user_id": "5v03k2vollkyw5hk",
-      "id": "5v03k6zgllkywbv4"
     }
   ],
   "transactions": [

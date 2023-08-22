@@ -2,16 +2,16 @@
  * Класс RegisterForm управляет формой
  * регистрации
  * */
-class RegisterForm extends AsyncForm {
-    onSubmit(data) {
-        User.register(data, (err, response) => {
-            this.element.reset();
+class RegisterForm extends AuthForm {
+    modalName = "register";
 
-            if (response && response.success) {
-                App.setState("user-logged");
-                App.getModal("register").close();
-            } else {
-                alert(response.error);
+    onSubmit(data) {
+        User.register(data, (error, response) => {
+            try {
+                this.handleResponse(error, response);
+                App.getModal(this.modalName).close();
+            } catch (error) {
+                alert(error);
             }
         });
     }

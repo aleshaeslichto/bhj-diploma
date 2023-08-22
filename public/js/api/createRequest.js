@@ -43,7 +43,7 @@ const createRequest = (options = {}) => {
         if (xhr.status === 200) {
             callback(null, xhr.response);
         } else {
-            callback(new Error("Ошибка: проблема с отправкой запроса"));
+            callback("Ошибка: проблема с отправкой запроса", {});
         }
     };
 
