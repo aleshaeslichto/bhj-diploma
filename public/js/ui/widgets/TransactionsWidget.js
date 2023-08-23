@@ -18,6 +18,7 @@ class TransactionsWidget {
 
       this.element = element;
       this.registerEvents();
+      this.update();
   }
   /**
    * Регистрирует обработчики нажатия на
