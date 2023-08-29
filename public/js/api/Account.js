@@ -10,7 +10,7 @@ class Account extends Entity {
      * */
     static get(id = "", callback) {
         createRequest({
-            url: this.URL + "/" + id, // почему лучше это - чем шаблонка? тк визуально шаблон читается в данной ситуации сложнее...
+            url: this.URL.concat('/', id),
             method: "GET",
             callback,
         });

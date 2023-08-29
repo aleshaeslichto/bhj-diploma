@@ -94,7 +94,7 @@ class TransactionsPage {
      * Получает список Transaction.list и полученные данные передаёт
      * в TransactionsPage.renderTransactions()
      * */
-    render(options){
+    render (options) {
       this.lastOptions = options;
       if (!options) {
         return;
@@ -103,12 +103,13 @@ class TransactionsPage {
         if (response.success) {
           this.renderTitle(response.data.name);
         }
-      })
+      });
       Transaction.list(options, (err, response) => {
         if (response.success) {
-          this.renderTransactions(response.data);
+          const transactions = response.data;
+          this.renderTransactions(transactions);
         }
-      })
+      });
     }
 
     /**
@@ -125,7 +126,7 @@ class TransactionsPage {
     /**
      * Устанавливает заголовок в элемент .content-title
      * */
-    renderTitle(name){
+    renderTitle (name) {
       this.element.querySelector('.content-title').textContent = name;
     }
 
@@ -178,14 +179,14 @@ class TransactionsPage {
      * Отрисовывает список транзакций на странице
      * используя getTransactionHTML
      * */
-    renderTransactions(data) {
-      this.element.querySelector(".content").innerHTML = "";
-      if (data) {
-        data.forEach((item) => {
-          this.element
-            .querySelector(".content")
-            .insertAdjacentHTML("beforeend", this.getTransactionHTML(item));
-        });
-      }
+    renderTransactions (data) {
+      let resultHTML = '';
+
+
+      data.forEach(item => {
+        resultHTML += this.getTransactionHTML(item);
+      });
+
+      this.element.querySelector('.content').innerHTML = resultHTML;
     }
   }
